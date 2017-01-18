@@ -8,8 +8,8 @@
 		databaseIdProvider?, mappers? -->
 	<plugins>
 		<!-- com.github.pagehelper为PageHelper类所在包名 -->
-		<plugin interceptor="com.github.pagehelper.PageHelper">
-			<property name="dialect" value="mysql" />
-		</plugin>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!-- <property name="dialect" value="mysql" /> -->
+        </plugin>
 	</plugins>
 </configuration>
