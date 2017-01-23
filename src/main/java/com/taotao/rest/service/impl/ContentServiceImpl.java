@@ -25,15 +25,23 @@ public class ContentServiceImpl implements ContentService {
     @Autowired
     private JediusClientSingle jediusClientSingle;
 
+    /**
+     * Redius服务器hash名字
+     */
     @Value("${INDEX_CONTENT_REDIS_KEY}")
     private String INDEX_CONTENT_REDIS_KEY;
 
+    /* (non-Javadoc)
+     * @see com.taotao.rest.service.ContentService#getContentByCategoryId(long)
+     */
     @Override
     public List<TbContent> getContentByCategoryId(long categoryId) {
+    	//在redius服务器查找资料
         String rediusResult = jediusClientSingle.hget(INDEX_CONTENT_REDIS_KEY,
                 String.valueOf(categoryId));
         List<TbContent> list = new ArrayList<>();
         try {
+        	//验证查找出来的结果是否正确
             if (!StringUtils.isBlank(rediusResult)) {
                 list = JsonUtils.jsonToList(rediusResult, TbContent.class);
                 return list;
