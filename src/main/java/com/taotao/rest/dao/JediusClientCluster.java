@@ -1,6 +1,5 @@
 package com.taotao.rest.dao;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import redis.clients.jedis.JedisCluster;
@@ -8,7 +7,7 @@ import redis.clients.jedis.JedisCluster;
 @Service
 public class JediusClientCluster implements JedisClient {
 
-    //@Autowired
+    // @Autowired
     private JedisCluster jedisCluster;
 
     @Override
@@ -45,6 +44,11 @@ public class JediusClientCluster implements JedisClient {
     @Override
     public long ttl(String key) {
         return jedisCluster.ttl(key);
+    }
+
+    @Override
+    public long hdel(String hkey, String key) {
+        return jedisCluster.hdel(hkey, key);
     }
 
 }

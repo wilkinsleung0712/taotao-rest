@@ -13,4 +13,5 @@ public interface ContentService {
      * @return
      */
     public List<TbContent> getContentByCategoryId(long categoryId);
+    
 }

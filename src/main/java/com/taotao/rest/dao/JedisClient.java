@@ -10,9 +10,12 @@ public interface JedisClient {
 
     public String hget(String hkey, String key);
 
+    public long hdel(String hkey, String key);
+
     public long incr(String key);
 
     public long expire(String key, long expireTimeInSecond);
 
     public long ttl(String key);
+
 }
