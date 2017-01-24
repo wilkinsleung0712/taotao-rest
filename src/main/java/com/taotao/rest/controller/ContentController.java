@@ -17,22 +17,20 @@ import com.taotao.util.ExceptionUtil;
 @RequestMapping("/content")
 public class ContentController {
 
-    @Autowired
-    private ContentService contentService;
+	@Autowired
+	private ContentService contentService;
 
-    @RequestMapping("/list/{contentCategoryId}")
-    @ResponseBody
-    public TaotaoResult getContentByCategoryId(
-            @PathVariable long contentCategoryId) {
+	@RequestMapping("/list/{contentCategoryId}")
+	@ResponseBody
+	public TaotaoResult getContentByCategoryId(@PathVariable Long contentCategoryId) {
 
-        try {
-            List<TbContent> resultList;
-            resultList = contentService
-                    .getContentByCategoryId(contentCategoryId);
-            return TaotaoResult.ok(resultList);
-        } catch (Exception e) {
-            return TaotaoResult.build(500, ExceptionUtil.getStackTrace(e));
-        }
+		try {
+			List<TbContent> resultList;
+			resultList = contentService.getContentByCategoryId(contentCategoryId);
+			return TaotaoResult.ok(resultList);
+		} catch (Exception e) {
+			return TaotaoResult.build(500, ExceptionUtil.getStackTrace(e));
+		}
 
-    }
+	}
 }

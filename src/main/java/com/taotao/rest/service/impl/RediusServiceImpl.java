@@ -2,12 +2,14 @@ package com.taotao.rest.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import com.taotao.pojo.TaotaoResult;
 import com.taotao.rest.dao.JediusClientSingle;
 import com.taotao.rest.service.RediusService;
 import com.taotao.util.ExceptionUtil;
 
+@Service
 public class RediusServiceImpl implements RediusService {
 
 	@Autowired
