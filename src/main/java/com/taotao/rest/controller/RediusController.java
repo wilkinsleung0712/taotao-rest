@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.taotao.pojo.TaotaoResult;
 import com.taotao.rest.service.RediusService;
 
+/**
+ * @author WEIQIANG LIANG
+ *
+ */
 @Controller
 @RequestMapping("/cache/sync")
 public class RediusController {
@@ -16,9 +20,9 @@ public class RediusController {
 	@Autowired
 	private RediusService rediusService;
 
-	@RequestMapping("/{contentId}")
+	@RequestMapping("/content/{contentId}")
 	@ResponseBody
-	public TaotaoResult SyncContentById(@PathVariable long contentId) {
+	public TaotaoResult SyncContentById(@PathVariable Long contentId) {
 		return rediusService.contentCacheSync(contentId);
 
 	}
