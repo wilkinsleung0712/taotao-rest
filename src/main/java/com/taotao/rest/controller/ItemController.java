@@ -15,10 +15,34 @@ public class ItemController {
 
     @Autowired
     private ItemService itemService;
-    
+
+    /**
+     * 根据商品id获取商品基本信息
+     * 
+     * @param itemId
+     * @return
+     */
     @RequestMapping("/info/{itemId}")
     @ResponseBody
     public TaotaoResult getItemBasicInfo(@PathVariable Long itemId) {
+        if (null == itemId || itemId.intValue() == 0) {
+            return TaotaoResult.build(500, "Item id cannot be null or 0");
+        }
         return itemService.getItemBasicInfo(itemId);
+    }
+
+    /**
+     * 根据商品id获取商品描述
+     * 
+     * @param itemId
+     * @return
+     */
+    @RequestMapping("/desc/{itemId}")
+    @ResponseBody
+    public TaotaoResult getItemDesc(@PathVariable Long itemId) {
+        if (null == itemId || itemId.intValue() == 0) {
+            return TaotaoResult.build(500, "Item id cannot be null or 0");
+        }
+        return itemService.getItemDesc(itemId);
     }
 }
