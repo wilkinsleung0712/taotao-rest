@@ -45,4 +45,13 @@ public class ItemController {
         }
         return itemService.getItemDesc(itemId);
     }
+    
+    @RequestMapping("/param/{itemId}")
+    @ResponseBody
+    public TaotaoResult getItemParam(@PathVariable Long itemId){
+        if (null == itemId || itemId.intValue() == 0) {
+            return TaotaoResult.build(500, "Item id cannot be null or 0");
+        }
+        return itemService.getItemParam(itemId);
+    }
 }
